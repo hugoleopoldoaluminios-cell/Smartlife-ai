@@ -648,3 +648,65 @@ atualizarClima();
 
 
 });
+
+// SmartLife AI - Ligação ao servidor de IA
+
+const botaoEnviar = document.getElementById("enviar");
+const campoPergunta = document.getElementById("pergunta");
+const respostaIA = document.getElementById("respostaIA");
+const botaoLimpar = document.getElementById("limpar");
+
+const URL_IA = "https://smartlife-ai-server.onrender.com";
+
+
+botaoEnviar.onclick = async () => {
+
+    const pergunta = campoPergunta.value.trim();
+
+    if (!pergunta) {
+        respostaIA.innerHTML = "Escreve uma pergunta primeiro.";
+        return;
+    }
+
+    respostaIA.innerHTML = "🤖 A pensar...";
+
+    try {
+
+        const resposta = await fetch(URL_IA, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: pergunta
+            })
+
+        });
+
+
+        const dados = await resposta.json();
+
+        respostaIA.innerHTML = dados.resposta;
+
+
+    } catch (erro) {
+
+        respostaIA.innerHTML =
+        "❌ Não foi possível ligar à IA.";
+
+        console.log(erro);
+
+    }
+
+};
+
+
+botaoLimpar.onclick = () => {
+
+    campoPergunta.value = "";
+    respostaIA.innerHTML = "";
+
+};
