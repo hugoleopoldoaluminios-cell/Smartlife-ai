@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartLife AI</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#111111">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+<h1>SmartLife AI</h1>
+
+
+<p>O teu assistente inteligente</p>
+
+
+
+<div class="topo-info">
+
+
+<div id="relogio">
+
+00:00:00
+
+</div>
+
+
+<div id="data">
+
+A carregar...
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+
+<main>
+
+
+
+<section id="casa" class="secao">
+
+
+<div class="cartao-principal">
+
+
+<h2>👋 Bem-vindo</h2>
+
+
+<p>
+
+O teu centro de controlo pessoal.
+
+</p>
+
+
+
+<div class="painelResumo">
+
+
+<div class="cartaoMini">
+
+<h3>📝</h3>
+
+<span id="totalTarefas">0</span>
+
+<p>Tarefas</p>
+
+</div>
+
+
+
+<div class="cartaoMini">
+
+<h3>💰</h3>
+
+<span id="saldoPainel">0€</span>
+
+<p>Disponível</p>
+
+</div><div class="cartaoMini">
+
+<h3>🎯</h3>
+
+<span id="poupancaPainel">0%</span>
+
+<p>Poupança</p>
+
+</div>
+
+
+
+<div class="cartaoMini">
+
+<h3>📉</h3>
+
+<span id="gastosPainel">0€</span>
+
+<p>Gastos</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="cartaoMini grande">
+
+
+<h3>🔔 Próximo lembrete</h3>
+
+
+<span id="proximoLembrete">
+
+Nenhum
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="cartaoTempo">
+
+
+<h3>🌦️ Meteorologia</h3>
+
+
+<div id="tempoIcone">
+
+☁️
+
+</div>
+
+
+<p id="temperatura">
+
+-- °C
+
+</p>
+
+
+<p id="estadoTempo">
+
+A carregar...
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="cartaoCalendario">
+
+
+<h3>📅 Calendário</h3>
+
+
+<p id="calendarioHoje">
+
+Hoje
+
+</p>
+
+
+</div><div class="fraseDia">
+
+
+<h3>💡 Frase do dia</h3>
+
+
+<p id="frase">
+
+"Pequenas escolhas criam grandes resultados."
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="atalhos">
+
+
+<button class="atalho" data-ir="tarefas">
+
+📝
+
+<span>Tarefas</span>
+
+</button>
+
+
+
+<button class="atalho" data-ir="financas">
+
+💰
+
+<span>Finanças</span>
+
+</button>
+
+
+
+<button class="atalho" data-ir="lembretes">
+
+🔔
+
+<span>Lembretes</span>
+
+</button>
+
+
+
+<button class="atalho" data-ir="extraterrestre">
+
+🤖
+
+<span>IA</span>
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="lembretes" class="secao">
+
+
+<div class="cartao-principal">
+
+
+<h2>🔔 Lembretes</h2>
+
+
+<p>Organiza os teus avisos.</p>
+
+
+
+
+<input
+
+id="novoLembrete"
+
+type="text"
+
+placeholder="Escreve o lembrete..."
+
+>
+
+
+
+
+<input
+
+id="horaLembrete"
+
+type="time"
+
+>
+
+
+
+
+<button id="adicionarLembrete">
+
+➕ Guardar lembrete
+
+</button>
+
+
+
+
+<ul id="listaLembretes"></ul>
+
+
+</div>
+
+
+</section><section id="tarefas" class="secao">
+
+
+<div class="cartao-principal">
+
+
+<h2>📝 Tarefas</h2>
+
+
+<input
+
+id="novaTarefa"
+
+type="text"
+
+placeholder="Nova tarefa..."
+
+>
+
+
+
+<button id="adicionarTarefa">
+
+➕ Adicionar
+
+</button>
+
+
+
+<ul id="listaTarefas"></ul>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="financas" class="secao">
+
+
+<div class="cartao-principal">
+
+
+<h2>💰 SmartLife Finance</h2>
+
+
+<p>Controla o teu dinheiro.</p>
+
+
+
+<div class="financaResumo">
+
+
+<div class="cartaoMini">
+
+<h3>💶</h3>
+
+<span id="salarioMostrar">0€</span>
+
+<p>Salário</p>
+
+</div>
+
+
+<div class="cartaoMini">
+
+<h3>📉</h3>
+
+<span id="gastosMostrar">0€</span>
+
+<p>Gastos</p>
+
+</div>
+
+
+<div class="cartaoMini">
+
+<h3>💰</h3>
+
+<span id="saldoMostrar">0€</span>
+
+<p>Saldo</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section><section id="extraterrestre" class="secao">
+
+
+<div class="cartao-principal">
+
+
+<h2>🤖 SmartLife AI</h2>
+
+
+<div id="mensagens">
+
+
+<div class="mensagem ia">
+
+Olá! Como posso ajudar?
+
+</div>
+
+
+</div>
+
+
+
+<input
+
+id="pergunta"
+
+type="text"
+
+placeholder="Escreve uma pergunta..."
+
+>
+
+
+
+<button id="enviar">
+
+Enviar
+
+</button>
+
+
+
+<button id="limpar">
+
+🧹 Limpar
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+<section id="pessoa" class="secao">
+
+
+<div class="cartao-principal">
+
+
+<h2>👤 Perfil</h2>
+
+
+<p>A tua área pessoal.</p>
+
+
+</div>
+
+
+</section>
+
+
+
+</main>
+
+
+
+
+
+<nav class="menu">
+
+
+<button data-secao="casa">
+
+🏠
+
+</button>
+
+
+
+<button data-secao="tarefas">
+
+📝
+
+</button>
+
+
+
+<button data-secao="financas">
+
+💰
+
+</button>
+
+
+
+<button data-secao="lembretes">
+
+🔔
+
+</button>
+
+
+
+<button data-secao="extraterrestre">
+
+🤖
+
+</button>
+
+
+
+</nav>
+
+
+
+
+<script src="script.js"></script>
+<script>
+
+if ("serviceWorker" in navigator) {
+
+navigator.serviceWorker.register("sw.js");
+
+}
+
+  </script>
+
+
+</body>
+
+
+</html>
